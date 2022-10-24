@@ -2,19 +2,38 @@ import { StyleSheet } from 'react-native';
 
 const NavigationMenuStyles = StyleSheet.create({
     wrapper: {
-        height: 150,
+        flex: 1,
+        position: 'absolute',
+        height: '100%',
         width: '100%',
-        position: 'relative',
-        display: "flex"
+        padding: 20
     },
     hamburgerWrapper: {
 
     },
-    menuText: {
-        color: '#8051cf',
+    activeMenuText: {
         fontWeight: 'bold',
+    },
+    hiddenText: {
+        color: '#f9fafe'
+    },
+    visibleText:{
+        color: '#8051cf'
+    },
+    menuText: {
         paddingBottom: 10,
         paddingTop: 10,
+    },
+    menuItemWrapper: {
+        position: 'absolute',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: 170,
+        //borderColor: 'black',
+        //borderWidth: 1,
+        left: -122,
+        marginLeft: 0
     },
     menuItem: {
         display: 'flex',

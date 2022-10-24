@@ -2,7 +2,7 @@ import React, { useState} from "react";
 import { View, TouchableOpacity, StyleSheet, Animated, ImageBackground, Text, Easing } from "react-native";
 import NavigationMenuStyles from '../styles/NavigationMenu';
 
-const FloatingButton = () => {
+const NavigationMenu = ({activePage, setActivePage}) => {
 
   const [icon_1] = useState(new Animated.Value(0));
   const [icon_2] = useState(new Animated.Value(0));
@@ -10,16 +10,17 @@ const FloatingButton = () => {
   const [icon_4] = useState(new Animated.Value(0));
   const [icon_5] = useState(new Animated.Value(0));
   const [icon_6] = useState(new Animated.Value(0));
-  const [icon_7] = useState(new Animated.Value(0));
-  const [icon_8] = useState(new Animated.Value(0));
+  const [icon_7] = useState(new Animated.Value(10));
+  const [menuTextVisible, setMenuTextVisible] = useState(true)
 
   const [pop, setPop] = useState(false);
 
-  const firstChange = 75;
-  const difference = 75;
+  const firstChange = 65;
+  const difference = 65;
 
   const popIn = () => {
     setPop(true);
+    setMenuTextVisible(!menuTextVisible);
     Animated.timing(icon_1, {
       toValue: firstChange,
       duration: 300,
@@ -57,13 +58,7 @@ const FloatingButton = () => {
       easing: Easing.ease
     }).start();
     Animated.timing(icon_7, {
-      toValue: firstChange + (difference * 6),
-      duration: 300,
-      useNativeDriver: false,
-      easing: Easing.ease
-    }).start();
-    Animated.timing(icon_8, {
-      toValue: 85,
+      toValue: 75,
       duration: 300,
       useNativeDriver: false,
       easing: Easing.ease
@@ -72,6 +67,7 @@ const FloatingButton = () => {
 
   const popOut = () => {
     setPop(false);
+    setMenuTextVisible(!menuTextVisible);
     Animated.timing(icon_1, {
       toValue: 0,
       duration: 300,
@@ -109,12 +105,6 @@ const FloatingButton = () => {
       easing: Easing.ease
     }).start();
     Animated.timing(icon_7, {
-      toValue: 0,
-      duration: 300,
-      useNativeDriver: false,
-      easing: Easing.ease
-    }).start();
-    Animated.timing(icon_8, {
       toValue: 10,
       duration: 300,
       useNativeDriver: false,
@@ -122,46 +112,70 @@ const FloatingButton = () => {
     }).start();
   }
 
+  const goToPage = pageName => {
+    if (pop) {
+      popOut();
+      setActivePage(pageName);
+    }
+  }
+
   return(
-    <View style={{
-      flex: 1
-    }}>
+    <View style={NavigationMenuStyles.wrapper}>
       <Animated.View style={[styles.circle, { bottom: icon_1}]}>
-        <TouchableOpacity>
+        <TouchableOpacity style={NavigationMenuStyles.menuItemWrapper} onPress={() => goToPage("home")}>
+          <Text 
+            style={[NavigationMenuStyles.menuText, menuTextVisible ? NavigationMenuStyles.hiddenText : NavigationMenuStyles.visibleText]}>
+              thuis blijven
+          </Text>
           <ImageBackground resizeMode="contain" style={NavigationMenuStyles.menuIcon} source={require('../assets/home.png')} />
         </TouchableOpacity>
       </Animated.View>
       <Animated.View style={[styles.circle, { bottom: icon_2}]}>
-        <TouchableOpacity>
+        <TouchableOpacity style={NavigationMenuStyles.menuItemWrapper} onPress={() => goToPage("outside")}>
+          <Text
+            style={[NavigationMenuStyles.menuText, menuTextVisible ? NavigationMenuStyles.hiddenText : NavigationMenuStyles.visibleText]}>
+            dagje uit
+          </Text>
           <ImageBackground resizeMode="contain" style={NavigationMenuStyles.menuIcon} source={require('../assets/outside.png')} />
         </TouchableOpacity>
       </Animated.View>
       <Animated.View style={[styles.circle, { bottom: icon_3}]}>
-        <TouchableOpacity>
+        <TouchableOpacity style={NavigationMenuStyles.menuItemWrapper} onPress={() => goToPage("food")}>
+          <Text
+            style={[NavigationMenuStyles.menuText, menuTextVisible ? NavigationMenuStyles.hiddenText : NavigationMenuStyles.visibleText]}>
+            drankje &amp; hapje
+          </Text>
           <ImageBackground resizeMode="contain" style={NavigationMenuStyles.menuIcon} source={require('../assets/food.png')} />
         </TouchableOpacity>
       </Animated.View>
       <Animated.View style={[styles.circle, { bottom: icon_4}]}>
-        <TouchableOpacity>
-         <ImageBackground resizeMode="contain" style={NavigationMenuStyles.menuIcon} source={require('../assets/movie.png')} />
+        <TouchableOpacity style={NavigationMenuStyles.menuItemWrapper} onPress={() => goToPage("movie")}>
+          <Text
+            style={[NavigationMenuStyles.menuText, menuTextVisible ? NavigationMenuStyles.hiddenText : NavigationMenuStyles.visibleText]}>
+            film avond
+          </Text>
+          <ImageBackground resizeMode="contain" style={NavigationMenuStyles.menuIcon} source={require('../assets/movie.png')} />
         </TouchableOpacity>
       </Animated.View>
       <Animated.View style={[styles.circle, { bottom: icon_5}]}>
-        <TouchableOpacity>
+        <TouchableOpacity style={NavigationMenuStyles.menuItemWrapper} onPress={() => goToPage("concert")}>
+          <Text
+            style={[NavigationMenuStyles.menuText, menuTextVisible ? NavigationMenuStyles.hiddenText : NavigationMenuStyles.visibleText]}>
+            concertje
+          </Text>
           <ImageBackground resizeMode="contain" style={NavigationMenuStyles.menuIcon} source={require('../assets/concert.png')} />
         </TouchableOpacity>
       </Animated.View>
       <Animated.View style={[styles.circle, { bottom: icon_6}]}>
-        <TouchableOpacity>
-          <ImageBackground resizeMode="contain" style={NavigationMenuStyles.menuIcon} source={require('../assets/food.png')} />
+        <TouchableOpacity style={NavigationMenuStyles.menuItemWrapper} onPress={() => goToPage("travel")}>
+          <Text
+            style={[NavigationMenuStyles.menuText, menuTextVisible ? NavigationMenuStyles.hiddenText : NavigationMenuStyles.visibleText]}>
+            reis &amp; dagje weg
+          </Text>
+          <ImageBackground resizeMode="contain" style={NavigationMenuStyles.menuIcon} source={require('../assets/travel.png')} />
         </TouchableOpacity>
       </Animated.View>
-      <Animated.View style={[styles.circle, { bottom: icon_7}]}>
-        <TouchableOpacity>
-         <ImageBackground resizeMode="contain" style={NavigationMenuStyles.menuIcon} source={require('../assets/travel.png')} />
-        </TouchableOpacity>
-      </Animated.View>
-      <Animated.View style={[styles.circle, { right: icon_8}]}>
+      <Animated.View style={[styles.circle, { right: icon_7}]}>
         <TouchableOpacity>
           <ImageBackground resizeMode="contain" style={[NavigationMenuStyles.menuIconSmall]} source={require('../assets/add.png')} />
         </TouchableOpacity>
@@ -179,11 +193,11 @@ const FloatingButton = () => {
 
 }
 
-export default FloatingButton;
+export default NavigationMenu;
 
 const styles = StyleSheet.create({
   circle: {
-     backgroundColor: '#8051cf',
+     backgroundColor: '#7051cf',
      width: 60,
      height: 60,
      position: 'absolute',

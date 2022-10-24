@@ -1,9 +1,11 @@
 import { StyleSheet } from 'react-native'; 
 
 const AppStyles = StyleSheet.create({
-    Wrapper: {
+    wrapper: {
         backgroundColor: '#f9fafe',
-        height: '100%',
+        flex: 1,
+    },
+    contentWrapper: {
         paddingLeft: 15,
         paddingRight: 15,
         paddingBottom: 25,

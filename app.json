@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#f9fafe"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -20,10 +20,17 @@
     "ios": {
       "supportsTablet": true
     },
+    "androidStatusBar": {
+      "backgroundColor": "#f9fafe",
+      "translucent": false
+    },
+    "androidNavigationBar": {
+      "backgroundColor":"#f9fafe"
+    },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#f9fafe"
       }
     },
     "web": {
