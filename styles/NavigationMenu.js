@@ -7,12 +7,28 @@ const NavigationMenuStyles = StyleSheet.create({
         position: 'relative',
         display: "flex"
     },
-    text: {
-        color: 'blue'
+    menuText: {
+        color: '#8051cf',
+        fontWeight: 'bold',
+        paddingBottom: 10,
+        paddingTop: 10,
+    },
+    menuItem: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        marginBottom: 15
+    },
+    menuIconWrapper: {
+        backgroundColor: '#8051cf',
+        padding: 10,
+        borderRadius: 100,
+        marginLeft: 15
     },
     menuIcon: {
-        height: 50,
-        width: 50
+        height: 35,
+        width: 35
     }
 });
 
