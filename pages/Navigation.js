@@ -8,23 +8,23 @@ import Travel from './Travel';
 import Outside from './Outside';
 import All from './All';
 
-const Navigation = ({ activePage, setActivePage }) => {
+const Navigation = ({ activePage, setActivePage, dates, setDates }) => {
     const renderPage = () => {
         switch (activePage) {
             case 'food':
-                return <Food />
+                return <Food dates={dates} setDates={setDates} />
             case 'home':
-                return <Home />
+                return <Home dates={dates} setDates={setDates} />
             case 'concert':
-                return <Concerts />
+                return <Concerts dates={dates} setDates={setDates} />
             case 'movie':
-                return <Movies />
+                return <Movies dates={dates} setDates={setDates} />
             case 'travel':
-                return <Travel />
+                return <Travel dates={dates} setDates={setDates} />
             case 'outside':
-                return <Outside />
+                return <Outside dates={dates} setDates={setDates} />
             default:
-                return <All />
+                return <All dates={dates} setDates={setDates} />
         }
     }
 
