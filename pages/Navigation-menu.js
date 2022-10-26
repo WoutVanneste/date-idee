@@ -4,61 +4,82 @@ import NavigationMenuStyles from '../styles/NavigationMenu';
 
 const NavigationMenu = ({activePage, setActivePage}) => {
 
-  const [icon_1] = useState(new Animated.Value(0));
-  const [icon_2] = useState(new Animated.Value(0));
-  const [icon_3] = useState(new Animated.Value(0));
-  const [icon_4] = useState(new Animated.Value(0));
-  const [icon_5] = useState(new Animated.Value(0));
-  const [icon_6] = useState(new Animated.Value(0));
-  const [icon_7] = useState(new Animated.Value(10));
+  const globalBottom = 20;
+  const globalRight = 20;
+
+  
+const styles = StyleSheet.create({
+  circle: {
+     backgroundColor: '#7051cf',
+     width: 60,
+     height: 60,
+     position: 'absolute',
+     bottom: 0,
+     borderRadius: 50,
+     justifyContent: 'center',
+     alignItems: 'center',
+     marginLeft: -30,
+     right: globalRight,
+     bottom: globalBottom,
+  }
+})
+
+  const [icon_1] = useState(new Animated.Value(globalBottom));
+  const [icon_2] = useState(new Animated.Value(globalBottom));
+  const [icon_3] = useState(new Animated.Value(globalBottom));
+  const [icon_4] = useState(new Animated.Value(globalBottom));
+  const [icon_5] = useState(new Animated.Value(globalBottom));
+  const [icon_6] = useState(new Animated.Value(globalBottom));
+  const [icon_7] = useState(new Animated.Value(globalRight));
   const [menuTextVisible, setMenuTextVisible] = useState(true)
 
   const [pop, setPop] = useState(false);
 
-  const firstChange = 65;
+  const firstChangeBottom = 85;
+  const firstChangeRight = 85;
   const difference = 65;
 
   const popIn = () => {
     setPop(true);
     setMenuTextVisible(!menuTextVisible);
     Animated.timing(icon_1, {
-      toValue: firstChange,
+      toValue: firstChangeBottom,
       duration: 300,
       useNativeDriver: false,
       easing: Easing.ease
     }).start();
     Animated.timing(icon_2, {
-      toValue: firstChange + (difference * 1),
+      toValue: firstChangeBottom + (difference * 1),
       duration: 300,
       useNativeDriver: false,
       easing: Easing.ease
     }).start();
     Animated.timing(icon_3, {
-      toValue: firstChange + (difference * 2),
+      toValue: firstChangeBottom + (difference * 2),
       duration: 300,
       useNativeDriver: false,
       easing: Easing.ease
     }).start();
     Animated.timing(icon_4, {
-      toValue: firstChange + (difference * 3),
+      toValue: firstChangeBottom + (difference * 3),
       duration: 300,
       useNativeDriver: false,
       easing: Easing.ease
     }).start();
     Animated.timing(icon_5, {
-      toValue: firstChange + (difference * 4),
+      toValue: firstChangeBottom + (difference * 4),
       duration: 300,
       useNativeDriver: false,
       easing: Easing.ease
     }).start();
     Animated.timing(icon_6, {
-      toValue: firstChange + (difference * 5),
+      toValue: firstChangeBottom + (difference * 5),
       duration: 300,
       useNativeDriver: false,
       easing: Easing.ease
     }).start();
     Animated.timing(icon_7, {
-      toValue: 75,
+      toValue: firstChangeRight,
       duration: 300,
       useNativeDriver: false,
       easing: Easing.ease
@@ -69,43 +90,43 @@ const NavigationMenu = ({activePage, setActivePage}) => {
     setPop(false);
     setMenuTextVisible(!menuTextVisible);
     Animated.timing(icon_1, {
-      toValue: 0,
+      toValue: globalBottom,
       duration: 300,
       useNativeDriver: false,
       easing: Easing.ease
     }).start();
     Animated.timing(icon_2, {
-      toValue: 0,
+      toValue: globalBottom,
       duration: 300,
       useNativeDriver: false,
       easing: Easing.ease
     }).start();
     Animated.timing(icon_3, {
-      toValue: 0,
+      toValue: globalBottom,
       duration: 300,
       useNativeDriver: false,
       easing: Easing.ease
     }).start();
     Animated.timing(icon_4, {
-      toValue: 0,
+      toValue: globalBottom,
       duration: 300,
       useNativeDriver: false,
       easing: Easing.ease
     }).start();
     Animated.timing(icon_5, {
-      toValue: 0,
+      toValue: globalBottom,
       duration: 300,
       useNativeDriver: false,
       easing: Easing.ease
     }).start();
     Animated.timing(icon_6, {
-      toValue: 0,
+      toValue: globalBottom,
       duration: 300,
       useNativeDriver: false,
       easing: Easing.ease
     }).start();
     Animated.timing(icon_7, {
-      toValue: 10,
+      toValue: globalRight,
       duration: 300,
       useNativeDriver: false,
       easing: Easing.ease
@@ -123,55 +144,31 @@ const NavigationMenu = ({activePage, setActivePage}) => {
     <View style={NavigationMenuStyles.wrapper}>
       <Animated.View style={[styles.circle, { bottom: icon_1}]}>
         <TouchableOpacity style={NavigationMenuStyles.menuItemWrapper} onPress={() => goToPage("home")}>
-          <Text 
-            style={[NavigationMenuStyles.menuText, menuTextVisible ? NavigationMenuStyles.hiddenText : NavigationMenuStyles.visibleText]}>
-              thuis blijven
-          </Text>
           <ImageBackground resizeMode="contain" style={NavigationMenuStyles.menuIcon} source={require('../assets/home.png')} />
         </TouchableOpacity>
       </Animated.View>
       <Animated.View style={[styles.circle, { bottom: icon_2}]}>
         <TouchableOpacity style={NavigationMenuStyles.menuItemWrapper} onPress={() => goToPage("outside")}>
-          <Text
-            style={[NavigationMenuStyles.menuText, menuTextVisible ? NavigationMenuStyles.hiddenText : NavigationMenuStyles.visibleText]}>
-            dagje uit
-          </Text>
           <ImageBackground resizeMode="contain" style={NavigationMenuStyles.menuIcon} source={require('../assets/outside.png')} />
         </TouchableOpacity>
       </Animated.View>
       <Animated.View style={[styles.circle, { bottom: icon_3}]}>
         <TouchableOpacity style={NavigationMenuStyles.menuItemWrapper} onPress={() => goToPage("food")}>
-          <Text
-            style={[NavigationMenuStyles.menuText, menuTextVisible ? NavigationMenuStyles.hiddenText : NavigationMenuStyles.visibleText]}>
-            drankje &amp; hapje
-          </Text>
           <ImageBackground resizeMode="contain" style={NavigationMenuStyles.menuIcon} source={require('../assets/food.png')} />
         </TouchableOpacity>
       </Animated.View>
       <Animated.View style={[styles.circle, { bottom: icon_4}]}>
         <TouchableOpacity style={NavigationMenuStyles.menuItemWrapper} onPress={() => goToPage("movie")}>
-          <Text
-            style={[NavigationMenuStyles.menuText, menuTextVisible ? NavigationMenuStyles.hiddenText : NavigationMenuStyles.visibleText]}>
-            film avond
-          </Text>
           <ImageBackground resizeMode="contain" style={NavigationMenuStyles.menuIcon} source={require('../assets/movie.png')} />
         </TouchableOpacity>
       </Animated.View>
       <Animated.View style={[styles.circle, { bottom: icon_5}]}>
         <TouchableOpacity style={NavigationMenuStyles.menuItemWrapper} onPress={() => goToPage("concert")}>
-          <Text
-            style={[NavigationMenuStyles.menuText, menuTextVisible ? NavigationMenuStyles.hiddenText : NavigationMenuStyles.visibleText]}>
-            concertje
-          </Text>
           <ImageBackground resizeMode="contain" style={NavigationMenuStyles.menuIcon} source={require('../assets/concert.png')} />
         </TouchableOpacity>
       </Animated.View>
       <Animated.View style={[styles.circle, { bottom: icon_6}]}>
         <TouchableOpacity style={NavigationMenuStyles.menuItemWrapper} onPress={() => goToPage("travel")}>
-          <Text
-            style={[NavigationMenuStyles.menuText, menuTextVisible ? NavigationMenuStyles.hiddenText : NavigationMenuStyles.visibleText]}>
-            reis &amp; dagje weg
-          </Text>
           <ImageBackground resizeMode="contain" style={NavigationMenuStyles.menuIcon} source={require('../assets/travel.png')} />
         </TouchableOpacity>
       </Animated.View>
@@ -194,18 +191,3 @@ const NavigationMenu = ({activePage, setActivePage}) => {
 }
 
 export default NavigationMenu;
-
-const styles = StyleSheet.create({
-  circle: {
-     backgroundColor: '#7051cf',
-     width: 60,
-     height: 60,
-     position: 'absolute',
-     bottom: 0,
-     borderRadius: 50,
-     justifyContent: 'center',
-     alignItems: 'center',
-     marginLeft: -30,
-     right: 10
-  }
-})
