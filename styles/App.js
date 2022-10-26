@@ -8,8 +8,8 @@ const AppStyles = StyleSheet.create({
     contentWrapper: {
         paddingLeft: 15,
         paddingRight: 15,
-        paddingBottom: 25,
-        paddingTop: 50
+        paddingBottom: 20,
+        paddingTop: 20
     }
 });
 

@@ -24,11 +24,6 @@ const Content = ({ activePage, setActivePage, dates, setDates }) => {
     }
 
     return <View style={{height: '100%', overflow: 'scroll'}} >
-        <View>
-            <TouchableOpacity onPress={() => setActivePage('')}>
-                <Button>close button</Button>
-            </TouchableOpacity>
-        </View>
         {renderPageTitle()}
         <RenderCards dates={dates} />
     </View>;
