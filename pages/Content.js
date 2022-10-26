@@ -23,7 +23,7 @@ const Content = ({ activePage, setActivePage, dates, setDates }) => {
         }
     }
 
-    return <View>
+    return <View style={{height: '100%', overflow: 'scroll'}} >
         <View>
             <TouchableOpacity onPress={() => setActivePage('')}>
                 <Button>close button</Button>

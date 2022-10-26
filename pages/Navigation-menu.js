@@ -135,13 +135,15 @@ const styles = StyleSheet.create({
 
   const goToPage = pageName => {
     if (pop) {
-      popOut();
       setActivePage(pageName);
+      setTimeout(() => {
+        popOut();
+      }, 50);
     }
   }
 
   return(
-    <View style={NavigationMenuStyles.wrapper}>
+    <View style={NavigationMenuStyles.wrapper} pointerEvents="box-none">
       <Animated.View style={[styles.circle, { bottom: icon_1}]}>
         <TouchableOpacity style={NavigationMenuStyles.menuItemWrapper} onPress={() => goToPage("home")}>
           <ImageBackground resizeMode="contain" style={NavigationMenuStyles.menuIcon} source={require('../assets/home.png')} />

@@ -2,11 +2,12 @@ import { StyleSheet } from 'react-native';
 
 const NavigationMenuStyles = StyleSheet.create({
     wrapper: {
-        flex: 1,
         position: 'absolute',
         height: '100%',
         width: '100%',
-        padding: 20
+        padding: 20,
+        zIndex: 500,
+        pointerEvent: 'none'
     },
     menuItem: {
         display: 'flex',

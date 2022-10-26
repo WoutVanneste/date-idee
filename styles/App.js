@@ -9,7 +9,7 @@ const AppStyles = StyleSheet.create({
         paddingLeft: 15,
         paddingRight: 15,
         paddingBottom: 25,
-        paddingTop: 50,
+        paddingTop: 50
     }
 });
 
