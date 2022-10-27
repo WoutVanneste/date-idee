@@ -29,6 +29,7 @@ export default {
       backgroundColor:"#f9fafe"
     },
     android: {
+      package: "com.woutvanneste.dateidee",
       adaptiveIcon: {
         foregroundImage: "./assets/adaptive-icon.png",
         backgroundColor: "#f9fafe"
