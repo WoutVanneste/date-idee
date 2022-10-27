@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Dimensions } from 'react-native';
 import Content from './pages/Content';
 import NavigationMenu from './pages/Navigation-menu';
-import SafeAreaView from 'react-native-safe-area-view';
+// import SafeAreaView from 'react-native-safe-area-view';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AppStyles from './styles/App';
 
@@ -160,8 +160,8 @@ const App = () => {
   const [activePage, setActivePage] = useState('home');
   const [dates, setDates] = useState(dateIdeetjes);
   return (
-    <SafeAreaProvider>
-       <SafeAreaView style={AppStyles.wrapper}>
+    <SafeAreaProvider style={AppStyles.wrapper}>
+       {/* <SafeAreaView style={AppStyles.wrapper}> */}
         <NavigationMenu activePage={activePage} setActivePage={setActivePage} />
         <View style={[AppStyles.contentWrapper, { height: Dimensions.get('window').height }]}>
           <Content
@@ -170,7 +170,7 @@ const App = () => {
             dates={dates}
             setDates={setDates} />
         </View>
-      </SafeAreaView>
+      {/* </SafeAreaView> */}
     </SafeAreaProvider>
   );
 }

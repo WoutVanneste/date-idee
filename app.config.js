@@ -1,7 +1,7 @@
 export default {
   expo: {
     name: "date idee",
-    slug: "date idee",
+    slug: "date-idee",
     owner: "wout",
     version: "1.0.0",
     orientation: "portrait",
